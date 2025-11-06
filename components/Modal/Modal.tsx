@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
+import { ModalWrapper } from "./Modal.styled";
 
 interface ModalProps {
   children: React.ReactNode;
@@ -28,14 +29,12 @@ export default function Modal({ onClose, children }: ModalProps) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-1000 bg-[rgba(33,37,41,0.6)] flex items-start justify-center"
+      className="fixed inset-0 z-1000 backdrop-blur-[25px]  flex items-center justify-center p-4 sm:px-6 md:px-8"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
     >
-      <div className="absolute top-[250px] left-1/2 -translate-x-1/2 w-[600px] min-h-[500px] p-10 flex flex-col items-start gap-10 rounded-lg bg-[rgba(255,255,255,0.25)] backdrop-blur-[25px] shrink-0 shadow-lg">
-        {children}
-      </div>
+      <ModalWrapper>{children}</ModalWrapper>
     </div>,
     document.body
   );

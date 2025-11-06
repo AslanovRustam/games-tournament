@@ -1,37 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Card, Overlay } from "./TournamentItem.styled";
 import { ITournament } from "@/types/tournament";
 
 type Props = { tournament: ITournament };
 
 function TournamentItem({ tournament }: Props) {
   return (
-    <li
-      key={tournament.id}
-      className="p-2 border rounded-md flex flex-col items-center justify-between gap-2"
-      aria-labelledby={`tour-${tournament.id}-title`}
-    >
-      <h2
-        id={`tour-${tournament.id}-title`}
-        className="text-lg font-medium text-center w-full truncate"
-        title={tournament.title}
-      >
-        {tournament.title}
-      </h2>
+    <Card className="bg-white dark:bg-slate-900 border">
       <Link
         href={`/tournaments/${tournament.id}`}
-        scroll={false}
-        className="relative group overflow-hidden rounded"
+        className="block relative w-full aspect-video"
       >
         <Image
           src={tournament.picture}
           alt={tournament.title}
-          className="object-cover rounded aspect-square transition-transform duration-300 ease-in-out group-hover:scale-110"
-          width={200}
-          height={200}
+          fill
+          className="object-cover"
         />
+        <Overlay>
+          <div style={{ width: "100%" }}>
+            <h3 style={{ margin: 0, fontSize: 16 }}>{tournament.title}</h3>
+          </div>
+        </Overlay>
       </Link>
-    </li>
+    </Card>
   );
 }
 

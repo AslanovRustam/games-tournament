@@ -3,7 +3,6 @@ import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import TournamentItem from "../TournamentItem/TournamentItem";
 import Skeleton from "../Skeleton/Skeleton";
-// import Modal from "../Modal/Modal";
 import { fetchTournaments } from "@/lib/api";
 import { ITournament } from "@/types/tournament";
 
@@ -14,7 +13,6 @@ function TournamentList({ initialTournaments }: Props) {
     initialTournaments || []
   );
   const [loading, setLoading] = useState(false);
-  //   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSearch = async (query: string) => {
     setLoading(true);
@@ -29,8 +27,6 @@ function TournamentList({ initialTournaments }: Props) {
     }
   };
 
-  //   const toggleModal = () => setIsModalOpen((prev) => !prev);
-
   return (
     <section className="w-full px-[5vw] py-10 flex flex-col gap-8">
       <SearchBar onSearch={handleSearch} />
@@ -43,7 +39,6 @@ function TournamentList({ initialTournaments }: Props) {
           ))
         )}
       </ul>
-      {/* {isModalOpen && <Modal onClose={toggleModal}>qwe</Modal>} */}
     </section>
   );
 }

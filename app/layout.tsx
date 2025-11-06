@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { ClientProviders } from "@/context/ClientProviders";
 import "modern-normalize";
 import "./globals.css";
 
@@ -25,8 +26,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable}  antialiased flex min-h-screen flex-col items-center bg-white dark:bg-black`}
       >
-        {children}
-        {modal}
+        <ClientProviders children={children} modal={modal} />
       </body>
     </html>
   );

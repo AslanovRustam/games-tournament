@@ -1,5 +1,6 @@
 "use client";
 import { FormEvent, useState } from "react";
+import Button from "../Button/Button";
 
 interface Props {
   onSearch: (query: string) => void;
@@ -16,21 +17,16 @@ export default function SearchBar({ onSearch }: Props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full max-w-md items-center justify-center gap-2"
+      className="flex flex-col sm:flex-row w-full max-w-md items-center justify-center gap-2"
     >
       <input
         type="text"
         placeholder="Searching for tournament..."
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="flex-1 rounded-md border border-gray-300 px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="flex-1 rounded-md border border-gray-300 px-4 py-2 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-gray-900 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <button
-        type="submit"
-        className="rounded-md bg-blue-600 px-4 py-2 text-white font-medium hover:bg-blue-700 transition cursor-pointer"
-      >
-        Search
-      </button>
+      <Button text="Search" type="submit" />
     </form>
   );
 }
